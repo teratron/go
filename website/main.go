@@ -14,7 +14,7 @@ type User struct {
 }
 
 func (u *User) getInfo() string {
-	return fmt.Sprintf("User name is: %s. He is %d and he has money equal: $%d", u.Name, u.Age, u.Money)
+	return fmt.Sprintf("User name is: %s. He is %d and he has money equal: $%.2f", u.Name, u.Age, u.Money)
 }
 
 func (u *User) setName(name string) {
@@ -63,13 +63,5 @@ func handleRequest() {
 }
 
 func main() {
-	/*bob := User{
-		name: "Bob",
-		age: 23,
-		money: 21000,
-		grades: .2,
-		happiness: 23,
-	}*/
-
 	handleRequest()
 }

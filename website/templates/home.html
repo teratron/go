@@ -9,11 +9,14 @@
 <h1>Home</h1>
 
 {{ if ne .Name "Bob" }}
-    <span>Hello</span>
+    <span>Hello {{ .Name }}</span>
 {{ else }}
-    <p>{{ .Name }}</p>
-    <p>{{ .Age }}</p>
+    <span>Hello!</span>
 {{ end }}
+
+<p>{{ .Name }}</p>
+<p>{{ .Age }}</p>
+<p>{{ .Money }}</p>
 
 <ul>
     {{ range .Hobbies }}
