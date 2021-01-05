@@ -17,7 +17,7 @@ func main() {
 	var err error
 
 	// Open DB
-	db, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/sea_battle")
+	db, err := sql.Open("mysql", "root:@tcp(localhost:3306)/sea_battle")
 	if err != nil {
 		panic(err)
 	}
@@ -25,7 +25,7 @@ func main() {
 	fmt.Println(db)
 
 	// Insert data
-	rows, err := db.Query("INSERT INTO `users` (`name`,`age`) VALUES ('Alex', 25)")
+	rows, err := db.Query("INSERT INTO `users` (`name`,`age`) VALUES ('Alex', 35), ('Bob', 27)")
 	if err != nil {
 		panic(err)
 	}
@@ -45,6 +45,6 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		_, _ = fmt.Fprintf(os.Stdout, "Use: %s, age: %d", user.Name, user.Age)
+		_, _ = fmt.Fprintf(os.Stdout, "Use: %s, age: %d\n", user.Name, user.Age)
 	}
 }
