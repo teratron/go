@@ -4,6 +4,7 @@ import "fmt"
 
 func main() {
 	f()
+	fmt.Println("Returned normally from f.")
 }
 
 // Функция f откладывает функцию, которая вызывает recover и печатает восстановленное значение (если оно не равно нулю).
