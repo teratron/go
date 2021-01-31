@@ -8,20 +8,21 @@ import (
 
 type errorOne struct {
 	text string
+	Err  error
 }
 
 func (e errorOne) Error() string {
-	return "Error One happened"
+	return "err1:"
 }
 
 func main() {
-	e1 := errorOne{"This is error"}
-	e2 := fmt.Errorf("e2: %w", e1)
-	e3 := fmt.Errorf("e3: %w", e2)
+	e1 := errorOne{text: "This is error", Err: errors.New("error")}
+	e2 := fmt.Errorf("err2: %w", e1)
+	e3 := fmt.Errorf("err3: %w", e2)
 
 	fmt.Println(e1, " / ", errors.Unwrap(e1))
 	fmt.Println(e2, " / ", errors.Unwrap(e2))
-	fmt.Println(e3, " / ", errors.Unwrap(e3))
+	fmt.Println(e3, " / ", errors.Unwrap(e3), " / ", errors.Unwrap(errors.Unwrap(e3)))
 	fmt.Println()
 
 	// func Is(err, target error) bool
@@ -70,9 +71,5 @@ func main() {
 
 func openFile(fileName string) error {
 	_, err := os.Open(fileName)
-	if err != nil {
-		return err
-		//return fmt.Errorf("error opening: %w", err)
-	}
-	return nil
+	return err
 }
