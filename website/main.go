@@ -34,32 +34,20 @@ func homePage(w http.ResponseWriter, r *http.Request) {
 	//_, err := fmt.Fprintf(w, `<b>%s</b>
 	//					<h1>Header</h1>`, "Bold text")
 
-	tmpl, err := template.ParseFiles("templates/home.html")
-	if err != nil {
-		fmt.Println(err)
-	}
+	tmpl, _ := template.ParseFiles("templates/home.html")
 
-	err = tmpl.Execute(w, &user)
-	if err != nil {
-		fmt.Println(err)
-	}
+	_ = tmpl.Execute(w, &user)
 }
 
 func contactsPage(w http.ResponseWriter, r *http.Request) {
-	_, err := fmt.Fprintf(w, "Contacts")
-	if err != nil {
-		fmt.Println(err)
-	}
+	_, _ = fmt.Fprintf(w, "Contacts")
 }
 
 func handleRequest() {
 	http.HandleFunc("/", homePage)
 	http.HandleFunc("/contacts/", contactsPage)
 
-	err := http.ListenAndServe(":8083", nil)
-	if err != nil {
-		fmt.Println(err)
-	}
+	_ = http.ListenAndServe(":8083", nil)
 }
 
 func main() {

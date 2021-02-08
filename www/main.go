@@ -22,9 +22,9 @@ func index(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles("templates/index.html", "templates/header.html", "templates/footer.html")
 	if err == nil {
 		err = tmpl.ExecuteTemplate(w, "index", nil)
-		if err != nil {
-			_, _ = fmt.Fprintf(w, err.Error())
-		}
+	}
+	if err != nil {
+		_, _ = fmt.Fprintf(w, err.Error())
 	}
 }
 
@@ -32,9 +32,9 @@ func create(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles("templates/create.html", "templates/header.html", "templates/footer.html")
 	if err == nil {
 		err = tmpl.ExecuteTemplate(w, "create", nil)
-		if err != nil {
-			_, _ = fmt.Fprintf(w, err.Error())
-		}
+	}
+	if err != nil {
+		_, _ = fmt.Fprintf(w, err.Error())
 	}
 }
 
