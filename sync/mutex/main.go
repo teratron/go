@@ -15,7 +15,7 @@ func main() {
 		go work(i, ch, &mutex)
 	}
 	for i := 1; i < 5; i++ {
-		<-ch
+		<-ch // ожидаем завершения всех горутин
 	}
 	fmt.Println("The End")
 }
