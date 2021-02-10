@@ -21,5 +21,6 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		_, _ = fmt.Fprint(w, "Index Page")
 	})
+
 	_ = http.ListenAndServe("localhost:8181", nil)
 }
